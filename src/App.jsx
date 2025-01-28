@@ -9,25 +9,29 @@ import PizzaDetailPage from "./pages/PizzaDetailPage"
 import PizzaCreate from "./pages/PizzaCreate"
 import Error404Page from "./pages/Error404Page"
 import { GlobalProvider } from "./context/GlobalContext"
+import { AlertProvider } from "./context/AlertContext"
 
 
 const App = () => {
   return (
-    <GlobalProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route Component={DefaultLayout}>
-            <Route path="/" Component={HomePage} />
-            <Route path="/chi-siamo" Component={AboutPage} />
-            <Route path="/contatti" Component={ContactsPage} />
-            <Route path="/elenco-pizze" Component={PizzaListPage} />
-            <Route path="/nuova-pizza" Component={PizzaCreate} />
-            <Route path="/dettaglio-pizza/:id" Component={PizzaDetailPage} />
-            <Route path="*" Component={Error404Page} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </GlobalProvider>
+    <AlertProvider>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route Component={DefaultLayout}>
+              <Route path="/" Component={HomePage} />
+              <Route path="/chi-siamo" Component={AboutPage} />
+              <Route path="/contatti" Component={ContactsPage} />
+              <Route path="/elenco-pizze" Component={PizzaListPage} />
+              <Route path="/nuova-pizza" Component={PizzaCreate} />
+              <Route path="/dettaglio-pizza/:id" Component={PizzaDetailPage} />
+              <Route path="*" Component={Error404Page} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
+    </AlertProvider>
+
 
   )
 }

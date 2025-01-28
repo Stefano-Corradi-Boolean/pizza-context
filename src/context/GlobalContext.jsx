@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { useAlertContext } from "./AlertContext";
 import axios from "axios";
 
 
@@ -6,6 +7,7 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
 
+  const { setAlertData } = useAlertContext();
   const [pizzas, setPizzas] = useState(null)
   const [pizza, setPizza] = useState(null);
 
@@ -20,7 +22,7 @@ const GlobalProvider = ({ children }) => {
       })
       .catch(err => {
         console.log('Errore nel caricamento delle pizze: ', err);
-
+        setAlertData({ type: 'error', message: err.message })
       })
 
   }
@@ -61,8 +63,17 @@ const GlobalProvider = ({ children }) => {
       })
   }
 
+  const value = {
+    pizzas,
+    fetchData,
+    pizza,
+    getPizzaById,
+    removePizzaById,
+    addPizza
+  }
+
   return (
-    <GlobalContext.Provider value={{ pizzas, fetchData, pizza, getPizzaById, removePizzaById, addPizza }}>
+    <GlobalContext.Provider value={value}>
       {children}
     </GlobalContext.Provider>
   )

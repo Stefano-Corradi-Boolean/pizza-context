@@ -1,0 +1,51 @@
+.alert-container {
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .alert {
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: relative;
+
+    p {
+      width: 95%;
+    }
+
+    i {
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      cursor: pointer;
+    }
+
+    ul {
+      display: block;
+    }
+
+    &.info {
+      background-color: lightblue;
+      color: blue;
+    }
+
+    &.success {
+      background-color: green;
+      color: white;
+    }
+
+    &.error {
+      background-color: red;
+      color: white;
+    }
+
+    &.error {
+      background-color: red;
+      color: white;
+    }
+
+  }
+}

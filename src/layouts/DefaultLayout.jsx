@@ -1,11 +1,13 @@
 import MainNav from "../components/MAinNav"
 import { Outlet } from "react-router-dom"
+import Alert from "../components/Alert"
 
 const DefaultLayout = () => {
   return (
     <>
       <header>
         <MainNav />
+        <Alert />
       </header>
 
       <main>
